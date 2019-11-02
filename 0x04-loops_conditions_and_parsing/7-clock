@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This script is dispaying the time from 12 hr and 59 min:
+
+hr=0
+while [ $hr -lt 13 ]; do
+    echo "Hour:" $hr
+        min=1
+	    while [ $min -lt 60 ]; do
+	          echo $min
+		        ((min++))
+	    done
+	        ((hr++))
+	done
