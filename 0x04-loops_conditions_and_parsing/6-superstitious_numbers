@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script is dispaying "Holbeton School" 10 times
+# This script is dispaying numbers from 1 to 20 and:
 
 i=1
 while [ $i -ne 21 ]; do
