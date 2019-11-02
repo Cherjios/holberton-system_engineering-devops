@@ -2,7 +2,7 @@
 # This script is dispaying "Holbeton School" 10 times
 
 n=0
-until [ $n -gt 10 ]; do
+until [ $n -gt 9 ]; do
 	echo "Holberton School" 
 	((n++))
 done
