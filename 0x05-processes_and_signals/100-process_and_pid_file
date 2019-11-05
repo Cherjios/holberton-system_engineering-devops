@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 #Bash script creates a file
-touch /var/run/holbertonscript.pid
-trap "echo 'I hate the kill command'" SIGTERM 
+
+sudo touch /var/run/holbertonscript.pid
+trap "echo 'I hate the kill command'; sudo rm -f /var/run/holbertonscript.pid; exit" SIGTERM 
 trap "echo 'Y U no love me?!'" SIGINT
-trap "sudo rm /var/run/holbertonscript.pid; exit" SIGQUIT 
+trap "sudo rm -f /var/run/holbertonscript.pid; exit" SIGQUIT 
 
 while true
 do
