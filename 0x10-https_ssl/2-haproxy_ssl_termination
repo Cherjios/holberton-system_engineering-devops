@@ -33,19 +33,20 @@ defaults
     errorfile 502 /etc/haproxy/errors/502.http
     errorfile 503 /etc/haproxy/errors/503.http
     errorfile 504 /etc/haproxy/errors/504.http
-frontend front
+frontend http
     bind *:80
     mode http
-    default_backend back
+    default_backend web-backend
 backend back
     balance roundrobin
     server 804-web-01 35.227.74.128:80 check
     server 804-web-02 34.74.29.177:80 check
-frontend front
-    bind *:80
-    mode http
-    default_backend back
-backend back
+frontend www.https
+    bind *:443 ssl crt /etc/haproxy/ssl/www.cherjios.tech.pem
+    reqadd X-Forwarded-Proto:\ https
+    default_backend web-backend
+backend web-backend
     balance roundrobin
+    redirect scheme https if !{ ssl_fc }
     server 804-web-01 35.227.74.128:80 check
     server 804-web-02 34.74.29.177:80 check
