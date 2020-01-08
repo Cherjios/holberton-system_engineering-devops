@@ -33,6 +33,9 @@ defaults
     errorfile 502 /etc/haproxy/errors/502.http
     errorfile 503 /etc/haproxy/errors/503.http
     errorfile 504 /etc/haproxy/errors/504.http
+    option forwardfor
+    option http-server-cose
+
 frontend http
     bind *:80
     mode http
@@ -45,6 +48,6 @@ frontend www-https
 
 backend web-backend
     balance roundrobin
-    redirect scheme https if !{ ssl_fc }
+    redirect scheme https code 301 if !{ ssl_fc }
     server 804-web-01 35.227.74.128:80 check
-    server 804-web-02 34.74.29.177:80 check
+    server 804-web-02 35.196.95.206:80 check
