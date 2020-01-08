@@ -41,7 +41,7 @@ backend back
     balance roundrobin
     server 804-web-01 35.227.74.128:80 check
     server 804-web-02 34.74.29.177:80 check
-frontend www.https
+frontend www-https
     bind *:443 ssl crt /etc/haproxy/ssl/www.cherjios.tech.pem
     reqadd X-Forwarded-Proto:\ https
     default_backend web-backend
