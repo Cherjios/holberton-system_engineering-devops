@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""Gathering data from API placeholder"""
+"""Export data in the CSV forat"""
 import csv
 import requests
 import sys
 
 
-if __name__ == "__main__":
+def do_request():
     r = requests.get('https://jsonplaceholder.typicode.com/users/{}'
                      .format(sys.argv[1]))
     d = r.json()
@@ -24,3 +24,6 @@ if __name__ == "__main__":
                             quoting=csv.QUOTE_ALL)
         for i, e in enumerate(titles):
             writer.writerow([user_id, name, completed[i], e])
+
+if __name__ == "__main__":
+    do_request()
