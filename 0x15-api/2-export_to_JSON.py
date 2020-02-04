@@ -4,7 +4,8 @@ import json
 import requests
 import sys
 
-if __name__ == "__main__":
+
+def do_request():
     r = requests.get('https://jsonplaceholder.typicode.com/users/{}'
                      .format(sys.argv[1]))
     d = r.json()
@@ -18,8 +19,11 @@ if __name__ == "__main__":
         if i.get('userId') == user_id:
             titles.append(i.get('title'))
             completed.append(i.get('completed'))
-    l = [{'task': e, 'completed': completed[i], 'username': name}
+    l = [{'username': name, 'completed': completed[i], 'task': e}
          for i, e in enumerate(titles)]
     json_dict = {user_id: l}
     with open('{}.json'.format(sys.argv[1]), mode='w') as json_file:
         json.dump({user_id: l}, json_file)
+
+if __name__ == "__main__":
+    do_request()
