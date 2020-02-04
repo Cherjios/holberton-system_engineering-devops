@@ -4,8 +4,7 @@ import json
 import requests
 import sys
 
-
-def do_request():
+if __name__ == "__main__":
     r = requests.get('https://jsonplaceholder.typicode.com/users/{}'
                      .format(sys.argv[1]))
     d = r.json()
@@ -24,6 +23,3 @@ def do_request():
     json_dict = {user_id: l}
     with open('{}.json'.format(sys.argv[1]), mode='w') as json_file:
         json.dump({user_id: l}, json_file)
-
-if __name__ == "__main__":
-    do_request()
